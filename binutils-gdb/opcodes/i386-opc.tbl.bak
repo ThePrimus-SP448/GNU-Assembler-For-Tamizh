@@ -187,20 +187,14 @@
 
 // Move instructions.
 mov, 0xa0, No64, D|W|CheckOperandSize|No_sSuf|No_qSuf, { Disp16|Disp32|Unspecified|Byte|Word|Dword, Acc|Byte|Word|Dword }
-\x94\x8D\x98\x9F, 0xa0, No64, D|W|CheckOperandSize|No_sSuf|No_qSuf, { Disp16|Disp32|Unspecified|Byte|Word|Dword, Acc|Byte|Word|Dword }
 mov, 0xa0, x64, D|W|CheckOperandSize|No_sSuf, { Disp64|Unspecified|Byte|Word|Dword|Qword, Acc|Byte|Word|Dword|Qword }
-\x94\x8D\x98\x9F, 0xa0, x64, D|W|CheckOperandSize|No_sSuf, { Disp64|Unspecified|Byte|Word|Dword|Qword, Acc|Byte|Word|Dword|Qword }
 movabs, 0xa0, x64, D|W|CheckOperandSize|No_sSuf, { Disp64|Unspecified|Byte|Word|Dword|Qword, Acc|Byte|Word|Dword|Qword }
 mov, 0x88, 0, D|W|CheckOperandSize|Modrm|No_sSuf|HLEPrefixRelease, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x94\x8D\x98\x9F, 0x88, 0, D|W|CheckOperandSize|Modrm|No_sSuf|HLEPrefixRelease, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 // In the 64bit mode the short form mov immediate is redefined to have
 // 64bit value.
 mov, 0xb0, 0, W|No_sSuf|No_qSuf, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32 }
-\x94\x8D\x98\x9F, 0xb0, 0, W|No_sSuf|No_qSuf, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32 }
 mov, 0xc6/0, 0, W|Modrm|No_sSuf|HLEPrefixRelease|Optimize, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x94\x8D\x98\x9F, 0xc6/0, 0, W|Modrm|No_sSuf|HLEPrefixRelease|Optimize, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 mov, 0xb8, x64, No_bSuf|No_wSuf|No_lSuf|No_sSuf|Optimize, { Imm64, Reg64 }
-\x94\x8D\x98\x9F, 0xb8, x64, No_bSuf|No_wSuf|No_lSuf|No_sSuf|Optimize, { Imm64, Reg64 }
 movabs, 0xb8, x64, No_bSuf|No_wSuf|No_lSuf|No_sSuf, { Imm64, Reg64 }
 // The segment register moves accept WordReg so that a segment register
 // can be copied to a 32 bit register, and vice versa, without using a
@@ -208,23 +202,15 @@ movabs, 0xb8, x64, No_bSuf|No_wSuf|No_lSuf|No_sSuf, { Imm64, Reg64 }
 // are set to an implementation defined value (on the Pentium Pro, the
 // implementation defined value is zero).
 mov, 0x8c, 0, RegMem|No_bSuf|No_sSuf|NoRex64, { SReg, Reg16|Reg32|Reg64 }
-\x94\x8D\x98\x9F, 0x8c, 0, RegMem|No_bSuf|No_sSuf|NoRex64, { SReg, Reg16|Reg32|Reg64 }
 mov, 0x8c, 0, D|Modrm|IgnoreSize|No_bSuf|No_lSuf|No_sSuf|No_qSuf, { SReg, Word|Unspecified|BaseIndex }
-\x94\x8D\x98\x9F, 0x8c, 0, D|Modrm|IgnoreSize|No_bSuf|No_lSuf|No_sSuf|No_qSuf, { SReg, Word|Unspecified|BaseIndex }
 mov, 0x8e, 0, Modrm|IgnoreSize|No_bSuf|No_sSuf|NoRex64, { Reg16|Reg32|Reg64, SReg }
-\x94\x8D\x98\x9F, 0x8e, 0, Modrm|IgnoreSize|No_bSuf|No_sSuf|NoRex64, { Reg16|Reg32|Reg64, SReg }
 // Move to/from control debug registers.  In the 16 or 32bit modes
 // they are 32bit.  In the 64bit mode they are 64bit.
 mov, 0xf20, i386&No64, D|RegMem|IgnoreSize|No_bSuf|No_wSuf|No_sSuf|No_qSuf, { Control, Reg32 }
-\x94\x8D\x98\x9F, 0xf20, i386&No64, D|RegMem|IgnoreSize|No_bSuf|No_wSuf|No_sSuf|No_qSuf, { Control, Reg32 }
 mov, 0xf20, x64, D|RegMem|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64, { Control, Reg64 }
-\x94\x8D\x98\x9F, 0xf20, x64, D|RegMem|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64, { Control, Reg64 }
 mov, 0xf21, i386&No64, D|RegMem|IgnoreSize|No_bSuf|No_wSuf|No_sSuf|No_qSuf, { Debug, Reg32 }
-\x94\x8D\x98\x9F, 0xf21, i386&No64, D|RegMem|IgnoreSize|No_bSuf|No_wSuf|No_sSuf|No_qSuf, { Debug, Reg32 }
 mov, 0xf21, x64, D|RegMem|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64, { Debug, Reg64 }
-\x94\x8D\x98\x9F, 0xf21, x64, D|RegMem|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64, { Debug, Reg64 }
 mov, 0xf24, i386&No64, D|RegMem|IgnoreSize|No_bSuf|No_wSuf|No_sSuf|No_qSuf, { Test, Reg32 }
-\x94\x8D\x98\x9F, 0xf24, i386&No64, D|RegMem|IgnoreSize|No_bSuf|No_wSuf|No_sSuf|No_qSuf, { Test, Reg32 }
 
 // Move after swapping the bytes
 movbe, 0x0f38f0, Movbe, D|Modrm|CheckOperandSize|No_bSuf|No_sSuf, { Word|Dword|Qword|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
@@ -238,9 +224,7 @@ movsb, 0xfbe, i386, Modrm|No_bSuf|No_sSuf|Optimize, { Reg8|Unspecified|BaseIndex
 movsw, 0xfbf, i386, Modrm|No_bSuf|No_wSuf|No_sSuf|Optimize, { Reg16|Unspecified|BaseIndex, Reg32|Reg64 }
 movsl, 0x63, x64, Modrm|No_bSuf|No_wSuf|No_lSuf|No_sSuf|Optimize, { Reg32|Unspecified|BaseIndex, Reg64 }
 movsx, 0xfbe, i386, W|Modrm|No_lSuf|No_sSuf|No_qSuf|Optimize, { Reg8|Reg16|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
-\x8D\xA3\x94, 0xfbe, i386, W|Modrm|No_lSuf|No_sSuf|No_qSuf|Optimize, { Reg8|Reg16|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
 movsx, 0x63, x64, Modrm|No_bSuf|No_wSuf|No_sSuf|No_qSuf|Optimize, { Reg32|Unspecified|BaseIndex, Reg32|Reg64 }
-\x8D\xA3\x94, 0x63, x64, Modrm|No_bSuf|No_wSuf|No_sSuf|No_qSuf|Optimize, { Reg32|Unspecified|BaseIndex, Reg32|Reg64 }
 movsxd, 0x63, x64, Modrm|NoSuf|Optimize, { Reg32|Unspecified|BaseIndex, Reg32|Reg64 }
 movsxd, 0x63, x64, Amd64|Modrm|NoSuf, { Reg32|Unspecified|BaseIndex, Reg16 }
 movsxd, 0x63, x64, Intel64|Modrm|NoSuf, { Reg16|Unspecified|BaseIndex, Reg16 }
@@ -251,49 +235,32 @@ movzw, 0xfb7, i386, Modrm|No_bSuf|No_wSuf|No_sSuf|Optimize, { Reg16|Unspecified|
 // The 64-bit variant is not particularly useful since the zero extend
 // 32->64 is implicit, but we can encode them.
 movzx, 0xfb6, i386, W|Modrm|No_lSuf|No_sSuf|No_qSuf|Optimize, { Reg8|Reg16|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
-\x95\xA0\x94, 0xfb6, i386, W|Modrm|No_lSuf|No_sSuf|No_qSuf|Optimize, { Reg8|Reg16|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
 
 // Push instructions.
 push, 0x50, No64, ImplicitStackOp|No_bSuf|No_sSuf|No_qSuf, { Reg16|Reg32 }
-\x95\xA3\x8D\xA3, 0x50, No64, ImplicitStackOp|No_bSuf|No_sSuf|No_qSuf, { Reg16|Reg32 }
 push, 0xff/6, No64, Modrm|ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf, { Reg16|Reg32|Unspecified|BaseIndex }
-\x95\xA3\x8D\xA3, 0xff/6, No64, Modrm|ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf, { Reg16|Reg32|Unspecified|BaseIndex }
 push, 0x6a, i186&No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, { Imm8S }
-\x95\xA3\x8D\xA3, 0x6a, i186&No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, { Imm8S }
 push, 0x68, i186&No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, { Imm16|Imm32 }
-\x95\xA3\x8D\xA3, 0x68, i186&No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, { Imm16|Imm32 }
 push, 0x6, No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, { SReg }
-\x95\xA3\x8D\xA3, 0x6, No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, { SReg }
 // In 64bit mode, the operand size is implicitly 64bit.
 push, 0x50, x64, ImplicitStackOp|No_bSuf|No_lSuf|No_sSuf|NoRex64, { Reg16|Reg64 }
-\x95\xA3\x8D\xA3, 0x50, x64, ImplicitStackOp|No_bSuf|No_lSuf|No_sSuf|NoRex64, { Reg16|Reg64 }
 pushp, 0x50, APX_F, ImplicitStackOp|No_bSuf|No_wSuf|No_lSuf|No_sSuf|Rex2, { Reg64 }
 push, 0xff/6, x64, Modrm|ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64, { Reg16|Reg64|Unspecified|BaseIndex }
-\x95\xA3\x8D\xA3, 0xff/6, x64, Modrm|ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64, { Reg16|Reg64|Unspecified|BaseIndex }
 push, 0x6a, x64, ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|IntelSuffix, { Imm8S }
-\x95\xA3\x8D\xA3, 0x6a, x64, ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|IntelSuffix, { Imm8S }
 push, 0x68, x64, ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|IntelSuffix, { Imm16|Imm32S }
-\x95\xA3\x8D\xA3, 0x68, x64, ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|IntelSuffix, { Imm16|Imm32S }
 push, 0xfa0, x64, ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|IntelSuffix, { SReg }
-\x95\xA3\x8D\xA3, 0xfa0, x64, ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|IntelSuffix, { SReg }
 
 pusha, 0x60, i186&No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, {}
 
 // Pop instructions.
 pop, 0x58, No64, ImplicitStackOp|No_bSuf|No_sSuf|No_qSuf, { Reg16|Reg32 }
-\x86\x91\xA3, 0x58, No64, ImplicitStackOp|No_bSuf|No_sSuf|No_qSuf, { Reg16|Reg32 }
 pop, 0x8f/0, No64, Modrm|ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf, { Reg16|Reg32|Unspecified|BaseIndex }
-\x86\x91\xA3, 0x8f/0, No64, Modrm|ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf, { Reg16|Reg32|Unspecified|BaseIndex }
 pop, 0x7, No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, { SReg }
-\x86\x91\xA3, 0x7, No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, { SReg }
 // In 64bit mode, the operand size is implicitly 64bit.
 pop, 0x58, x64, ImplicitStackOp|No_bSuf|No_lSuf|No_sSuf|NoRex64, { Reg16|Reg64 }
-\x86\x91\xA3, 0x58, x64, ImplicitStackOp|No_bSuf|No_lSuf|No_sSuf|NoRex64, { Reg16|Reg64 }
 popp, 0x58, APX_F, ImplicitStackOp|No_bSuf|No_wSuf|No_lSuf|No_sSuf|Rex2, { Reg64 }
 pop, 0x8f/0, x64, Modrm|ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64, { Reg16|Reg64|Unspecified|BaseIndex }
-\x86\x91\xA3, 0x8f/0, x64, Modrm|ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64, { Reg16|Reg64|Unspecified|BaseIndex }
 pop, 0xfa1, x64, ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|IntelSuffix, { SReg }
-\x86\x91\xA3, 0xfa1, x64, ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|IntelSuffix, { SReg }
 
 popa, 0x61, i186&No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, {}
 
@@ -302,9 +269,7 @@ popa, 0x61, i186&No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|Intel
 
 // In the 64bit code, xchg rax, rax is reused for new nop instruction.
 xchg, 0x90, 0, D|C|CheckOperandSize|No_bSuf|No_sSuf, { Reg16|Reg32|Reg64, Acc|Word|Dword|Qword }
-\x96\xA0\x9D\xA3, 0x90, 0, D|C|CheckOperandSize|No_bSuf|No_sSuf, { Reg16|Reg32|Reg64, Acc|Word|Dword|Qword }
 xchg, 0x86, 0, D|W|C|CheckOperandSize|Modrm|No_sSuf|HLEPrefixAny, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x96\xA0\x9D\xA3, 0x86, 0, D|W|C|CheckOperandSize|Modrm|No_sSuf|HLEPrefixAny, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 
 // In/out from ports.
 in, 0xe4, 0, W|No_sSuf|No_qSuf, { Imm8, Acc|Byte|Word|Dword }
@@ -320,7 +285,6 @@ out, 0xee, 0, W|No_sSuf|No_qSuf|IntelSuffix, { InOutPortReg }
 
 // Load effective address.
 lea, 0x8d, 0, Modrm|Anysize|No_bSuf|No_sSuf|Optimize, { BaseIndex, Reg16|Reg32|Reg64 }
-\x82\x91\x96\x9F, 0x8d, 0, Modrm|Anysize|No_bSuf|No_sSuf|Optimize, { BaseIndex, Reg16|Reg32|Reg64 }
 
 // Load segment registers from memory.
 lds, 0xc5, No64, Modrm|No_bSuf|No_sSuf|No_qSuf, { DWord|Fword|Unspecified|BaseIndex, Reg16|Reg32 }
@@ -334,7 +298,6 @@ lss, 0xfb2, x64, Intel64|Modrm|No_bSuf|No_sSuf, { Dword|Fword|Tbyte|Unspecified|
 
 // Flags register instructions.
 clc, 0xf8, 0, NoSuf, {}
-\x93\xA3\x91\xA7, 0xf8, 0, NoSuf, {}
 cld, 0xfc, 0, NoSuf, {}
 cli, 0xfa, 0, NoSuf, {}
 clts, 0xf06, i286, NoSuf, {}
@@ -348,7 +311,6 @@ pushf, 0x9c, x64, ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|In
 popf, 0x9d, No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, {}
 popf, 0x9d, x64, ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|IntelSuffix, {}
 stc, 0xf9, 0, NoSuf, {}
-\x94\xA1\x9D\xA3\x9A\xA3, 0xf9, 0, NoSuf, {}
 std, 0xfd, 0, NoSuf, {}
 sti, 0xfb, 0, NoSuf, {}
 
@@ -381,19 +343,12 @@ clr, 0x30, 0, W|Modrm|No_sSuf|RegKludge|Optimize, { Reg8|Reg16|Reg32|Reg64 }
 clr, 0x30, APX_NDD, W|Modrm|No_sSuf|RegKludge|EVexMap4|NF, { Reg8|Reg16|Reg32|Reg64 }
 
 cmp, 0x38, 0, D|W|CheckOperandSize|Modrm|No_sSuf, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x89\x95\x9F, 0x38, 0, D|W|CheckOperandSize|Modrm|No_sSuf, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 cmp, 0x83/7, 0, Modrm|No_bSuf|No_sSuf, { Imm8S, Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x89\x95\x9F, 0x83/7, 0, Modrm|No_bSuf|No_sSuf, { Imm8S, Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 cmp, 0x3c, 0, W|No_sSuf, { Imm8|Imm16|Imm32|Imm32S, Acc|Byte|Word|Dword|Qword }
-\x89\x95\x9F, 0x3c, 0, W|No_sSuf, { Imm8|Imm16|Imm32|Imm32S, Acc|Byte|Word|Dword|Qword }
 cmp, 0x80/7, 0, W|Modrm|No_sSuf, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x89\x95\x9F, 0x80/7, 0, W|Modrm|No_sSuf, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 cmp, 0x380a, APX_NCI, D|W|CheckOperandSize|EVexMap4|Scc|Modrm|No_sSuf, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x89\x95\x9F, 0x380a, APX_NCI, D|W|CheckOperandSize|EVexMap4|Scc|Modrm|No_sSuf, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 cmp, 0x830a/7, APX_NCI, Modrm|EVexMap4|Scc|No_bSuf|No_sSuf, { Imm8S, Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x89\x95\x9F, 0x830a/7, APX_NCI, Modrm|EVexMap4|Scc|No_bSuf|No_sSuf, { Imm8S, Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 cmp, 0x800a/7, APX_NCI, W|Modrm|EVexMap4|Scc|No_sSuf, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x89\x95\x9F, 0x800a/7, APX_NCI, W|Modrm|EVexMap4|Scc|No_sSuf, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 
 <scc:opc, o:0, no:1, b:2, c:2, nae:2, nb:3, nc:3, ae:3, e:4, z:4, ne:5, nz:5, be:6, na:6, nbe:7, a:7, +
          s:8, ns:9, t:a, f:b, l:c, nge:c, nl:d, ge:d, le:e, ng:e, nle:f, g:f>
@@ -403,15 +358,10 @@ ccmp<scc>, 0x830<scc:opc>/7, APX_NCI, Modrm|EVexMap4|Scc|No_bSuf|No_sSuf, { Imm8
 ccmp<scc>, 0x800<scc:opc>/7, APX_NCI, W|Modrm|EVexMap4|Scc|No_sSuf, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 
 test, 0x84, 0, D|W|C|CheckOperandSize|Modrm|No_sSuf, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x81\x97\x9F, 0x84, 0, D|W|C|CheckOperandSize|Modrm|No_sSuf, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 test, 0xa8, 0, W|No_sSuf|Optimize, { Imm8|Imm16|Imm32|Imm32S, Acc|Byte|Word|Dword|Qword }
-\x81\x97\x9F, 0xa8, 0, W|No_sSuf|Optimize, { Imm8|Imm16|Imm32|Imm32S, Acc|Byte|Word|Dword|Qword }
 test, 0xf6/0, 0, W|Modrm|No_sSuf|Optimize, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x81\x97\x9F, 0xf6/0, 0, W|Modrm|No_sSuf|Optimize, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 test, 0x840a, APX_NCI, D|W|C|CheckOperandSize|Modrm|EVexMap4|Scc|No_sSuf, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x81\x97\x9F, 0x840a, APX_NCI, D|W|C|CheckOperandSize|Modrm|EVexMap4|Scc|No_sSuf, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 test, 0xf60a/0, APX_NCI, W|Modrm|EVexMap4|Scc|No_sSuf|Optimize, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x81\x97\x9F, 0xf60a/0, APX_NCI, W|Modrm|EVexMap4|Scc|No_sSuf|Optimize, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 
 ctest<scc>, 0x840<scc:opc>, APX_NCI, D|W|C|CheckOperandSize|Modrm|EVexMap4|Scc|No_sSuf, { Reg8|Reg16|Reg32|Reg64, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 ctest<scc>, 0xf60<scc:opc>/0, APX_NCI, W|Modrm|EVexMap4|Scc|No_sSuf|Optimize, { Imm8|Imm16|Imm32|Imm32S, Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
@@ -469,32 +419,21 @@ cqto, 0x99, x64, Size64|NoSuf, {}
 <mul>, 0xf6/<mul:opc>, 0, W|Modrm|No_sSuf, { Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 <mul>, 0xf6/<mul:opc>, APX_NDD, W|Modrm|No_sSuf|EVexMap4|NF|<mul:opt>, { Reg8|Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 imul, 0xaf, APX_NDD, C|Modrm|CheckOperandSize|No_bSuf|No_sSuf|DstVVVV|EVexMap4|NF, { Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64, Reg16|Reg32|Reg64 }
-\x8D\xA3\x95\xA5, 0xaf, APX_NDD, C|Modrm|CheckOperandSize|No_bSuf|No_sSuf|DstVVVV|EVexMap4|NF, { Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64, Reg16|Reg32|Reg64 }
 imul, 0xfaf, i386, Modrm|CheckOperandSize|No_bSuf|No_sSuf, { Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
-\x8D\xA3\x95\xA5, 0xfaf, i386, Modrm|CheckOperandSize|No_bSuf|No_sSuf, { Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
 imul, 0xaf, APX_NDD, Modrm|CheckOperandSize|No_bSuf|No_sSuf|EVexMap4|NF, { Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
-\x8D\xA3\x95\xA5, 0xaf, APX_NDD, Modrm|CheckOperandSize|No_bSuf|No_sSuf|EVexMap4|NF, { Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
 imul, 0x6b, i186, Modrm|CheckOperandSize|No_bSuf|No_sSuf, { Imm8S, Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
-\x8D\xA3\x95\xA5, 0x6b, i186, Modrm|CheckOperandSize|No_bSuf|No_sSuf, { Imm8S, Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
 imul, 0x6b, APX_NDD, Modrm|CheckOperandSize|No_bSuf|No_sSuf|EVexMap4|NF|Optimize, { Imm8S, Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
-\x8D\xA3\x95\xA5, 0x6b, APX_NDD, Modrm|CheckOperandSize|No_bSuf|No_sSuf|EVexMap4|NF|Optimize, { Imm8S, Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
 imulzu, 0x6b, APX_NDD, Modrm|No_bSuf|No_sSuf|EVexMap4|NF|ZU|Optimize, { Imm8S, Reg16|Unspecified|BaseIndex, Reg16 }
 imul, 0x69, i186, Modrm|CheckOperandSize|No_bSuf|No_sSuf, { Imm16|Imm32|Imm32S, Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
-\x8D\xA3\x95\xA5, 0x69, i186, Modrm|CheckOperandSize|No_bSuf|No_sSuf, { Imm16|Imm32|Imm32S, Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
 imul, 0x69, APX_NDD, Modrm|CheckOperandSize|No_bSuf|No_sSuf|EVexMap4|NF|Optimize, { Imm16|Imm32|Imm32S, Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
-\x8D\xA3\x95\xA5, 0x69, APX_NDD, Modrm|CheckOperandSize|No_bSuf|No_sSuf|EVexMap4|NF|Optimize, { Imm16|Imm32|Imm32S, Reg16|Reg32|Reg64|Unspecified|BaseIndex, Reg16|Reg32|Reg64 }
 imulzu, 0x69, APX_NDD, Modrm|No_bSuf|No_sSuf|EVexMap4|NF|ZU|Optimize, { Imm16, Reg16|Unspecified|BaseIndex, Reg16 }
 // imul with 2 operands mimics imul with 3 by putting the register in
 // both i.rm.reg & i.rm.regmem fields.  RegKludge enables this
 // transformation.
 imul, 0x6b, i186, Modrm|No_bSuf|No_sSuf|RegKludge, { Imm8S, Reg16|Reg32|Reg64 }
-\x8D\xA3\x95\xA5, 0x6b, i186, Modrm|No_bSuf|No_sSuf|RegKludge, { Imm8S, Reg16|Reg32|Reg64 }
 imul, 0x6b, APX_NDD, Modrm|No_bSuf|No_sSuf|RegKludge|EVexMap4|NF|Optimize, { Imm8S, Reg16|Reg32|Reg64 }
-\x8D\xA3\x95\xA5, 0x6b, APX_NDD, Modrm|No_bSuf|No_sSuf|RegKludge|EVexMap4|NF|Optimize, { Imm8S, Reg16|Reg32|Reg64 }
 imul, 0x69, i186, Modrm|No_bSuf|No_sSuf|RegKludge, { Imm16|Imm32|Imm32S, Reg16|Reg32|Reg64 }
-\x8D\xA3\x95\xA5, 0x69, i186, Modrm|No_bSuf|No_sSuf|RegKludge, { Imm16|Imm32|Imm32S, Reg16|Reg32|Reg64 }
 imul, 0x69, APX_NDD, Modrm|No_bSuf|No_sSuf|RegKludge|EVexMap4|NF|Optimize, { Imm16|Imm32|Imm32S, Reg16|Reg32|Reg64 }
-\x8D\xA3\x95\xA5, 0x69, APX_NDD, Modrm|No_bSuf|No_sSuf|RegKludge|EVexMap4|NF|Optimize, { Imm16|Imm32|Imm32S, Reg16|Reg32|Reg64 }
 // ZU is omitted here, for colliding with RegKludge.  process_operands() will
 // replace the constraint value after processing RegKludge.
 imulzu, 0x6b, APX_NDD, Modrm|No_bSuf|No_sSuf|RegKludge|EVexMap4|NF/*|ZU*/|Optimize, { Imm8S, Reg16 }
@@ -548,45 +487,28 @@ sh<shd>d, 0x0fa5 | <shd:opc>, i386, Modrm|CheckOperandSize|No_bSuf|No_sSuf, { Re
 
 // Control transfer instructions.
 call, 0xe8, No64, JumpDword|ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|BNDPrefixOk|IntelSuffix, { Disp16|Disp32 }
-\x80\x9B\xA7, 0xe8, No64, JumpDword|ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|BNDPrefixOk|IntelSuffix, { Disp16|Disp32 }
 call, 0xe8, x64, Amd64|JumpDword|ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|BNDPrefixOk|IntelSuffix, { Disp16|Disp32 }
-\x80\x9B\xA7, 0xe8, x64, Amd64|JumpDword|ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|BNDPrefixOk|IntelSuffix, { Disp16|Disp32 }
 call, 0xe8, x64, Intel64|JumpDword|ImplicitStackOp|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64|BNDPrefixOk, { Disp32 }
-\x80\x9B\xA7, 0xe8, x64, Intel64|JumpDword|ImplicitStackOp|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64|BNDPrefixOk, { Disp32 }
 call, 0xff/2, No64, Modrm|JumpAbsolute|ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|BNDPrefixOk|NoTrackPrefixOk, { Reg16|Reg32|Unspecified|BaseIndex }
-\x80\x9B\xA7, 0xff/2, No64, Modrm|JumpAbsolute|ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|BNDPrefixOk|NoTrackPrefixOk, { Reg16|Reg32|Unspecified|BaseIndex }
 call, 0xff/2, x64, Amd64|Modrm|JumpAbsolute|ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|BNDPrefixOk|NoTrackPrefixOk, { Reg16|Reg64|Unspecified|BaseIndex }
-\x80\x9B\xA7, 0xff/2, x64, Amd64|Modrm|JumpAbsolute|ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|BNDPrefixOk|NoTrackPrefixOk, { Reg16|Reg64|Unspecified|BaseIndex }
 call, 0xff/2, x64, Intel64|Modrm|JumpAbsolute|ImplicitStackOp|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64|BNDPrefixOk|NoTrackPrefixOk, { Reg64|Unspecified|BaseIndex }
-\x80\x9B\xA7, 0xff/2, x64, Intel64|Modrm|JumpAbsolute|ImplicitStackOp|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64|BNDPrefixOk|NoTrackPrefixOk, { Reg64|Unspecified|BaseIndex }
 // Intel Syntax remaining call instances.
 call, 0x9a, No64, JumpInterSegment|ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, { Imm16, Imm16|Imm32 }
-\x80\x9B\xA7, 0x9a, No64, JumpInterSegment|ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, { Imm16, Imm16|Imm32 }
 call, 0xff/3, 0, Amd64|Modrm|JumpAbsolute|ImplicitStackOp|DefaultSize|NoSuf, { Dword|Fword|BaseIndex }
-\x80\x9B\xA7, 0xff/3, 0, Amd64|Modrm|JumpAbsolute|ImplicitStackOp|DefaultSize|NoSuf, { Dword|Fword|BaseIndex }
 call, 0xff/3, x64, Intel64|Modrm|JumpAbsolute|ImplicitStackOp|NoSuf, { Dword|Fword|Tbyte|BaseIndex }
-\x80\x9B\xA7, 0xff/3, x64, Intel64|Modrm|JumpAbsolute|ImplicitStackOp|NoSuf, { Dword|Fword|Tbyte|BaseIndex }
 lcall, 0x9a, No64, JumpInterSegment|DefaultSize|No_bSuf|No_sSuf|No_qSuf, { Imm16, Imm16|Imm32 }
 lcall, 0xff/3, 0, Amd64|Modrm|JumpAbsolute|DefaultSize|No_bSuf|No_sSuf|No_qSuf, { Unspecified|BaseIndex }
 lcall, 0xff/3, x64, Intel64|Modrm|JumpAbsolute|No_bSuf|No_sSuf, { Unspecified|BaseIndex }
 
 jmp, 0xeb, 0, Amd64|Jump|NoSuf|BNDPrefixOk, { Disp8|Disp16|Disp32 }
-\x93\xA0, 0xeb, 0, Amd64|Jump|NoSuf|BNDPrefixOk, { Disp8|Disp16|Disp32 }
 jmp, 0xeb, x64, Intel64|Jump|NoSuf|BNDPrefixOk, { Disp8|Disp32 }
-\x93\xA0, 0xeb, x64, Intel64|Jump|NoSuf|BNDPrefixOk, { Disp8|Disp32 }
 jmp, 0xff/4, No64, Modrm|JumpAbsolute|No_bSuf|No_sSuf|No_qSuf|BNDPrefixOk|NoTrackPrefixOk, { Reg16|Reg32|Unspecified|BaseIndex }
-\x93\xA0, 0xff/4, No64, Modrm|JumpAbsolute|No_bSuf|No_sSuf|No_qSuf|BNDPrefixOk|NoTrackPrefixOk, { Reg16|Reg32|Unspecified|BaseIndex }
 jmp, 0xff/4, x64, Amd64|Modrm|JumpAbsolute|No_bSuf|No_lSuf|No_sSuf|NoRex64|BNDPrefixOk|NoTrackPrefixOk, { Reg16|Reg64|Unspecified|BaseIndex }
-\x93\xA0, 0xff/4, x64, Amd64|Modrm|JumpAbsolute|No_bSuf|No_lSuf|No_sSuf|NoRex64|BNDPrefixOk|NoTrackPrefixOk, { Reg16|Reg64|Unspecified|BaseIndex }
 jmp, 0xff/4, x64, Intel64|Modrm|JumpAbsolute|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64|BNDPrefixOk|NoTrackPrefixOk, { Reg64|Unspecified|BaseIndex }
-\x93\xA0, 0xff/4, x64, Intel64|Modrm|JumpAbsolute|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64|BNDPrefixOk|NoTrackPrefixOk, { Reg64|Unspecified|BaseIndex }
 // Intel Syntax remaining jmp instances.
 jmp, 0xea, No64, JumpInterSegment|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, { Imm16, Imm16|Imm32 }
-\x93\xA0, 0xea, No64, JumpInterSegment|No_bSuf|No_sSuf|No_qSuf|IntelSuffix, { Imm16, Imm16|Imm32 }
 jmp, 0xff/5, 0, Amd64|Modrm|JumpAbsolute|NoSuf, { Dword|Fword|BaseIndex }
-\x93\xA0, 0xff/5, 0, Amd64|Modrm|JumpAbsolute|NoSuf, { Dword|Fword|BaseIndex }
 jmp, 0xff/5, x64, Intel64|Modrm|JumpAbsolute|NoSuf, { Dword|Fword|Tbyte|BaseIndex }
-\x93\xA0, 0xff/5, x64, Intel64|Modrm|JumpAbsolute|NoSuf, { Dword|Fword|Tbyte|BaseIndex }
 ljmp, 0xea, No64, JumpInterSegment|No_bSuf|No_sSuf|No_qSuf, { Imm16, Imm16|Imm32 }
 ljmp, 0xff/5, 0, Amd64|Modrm|JumpAbsolute|No_bSuf|No_sSuf|No_qSuf, { Unspecified|BaseIndex }
 ljmp, 0xff/5, x64, Intel64|Modrm|JumpAbsolute|No_bSuf|No_sSuf, { Unspecified|BaseIndex }
@@ -595,17 +517,11 @@ jmpabs, 0xa1, APX_F, NoSuf|Rex2, { Imm64 }
 jmpabs, 0xa1, APX_F, NoSuf|Rex2|IntelSyntax, { Disp64|Unspecified }
 
 ret, 0xc3, No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|RepPrefixOk|BNDPrefixOk|IntelSuffix, {}
-\x96\xA2, 0xc3, No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|RepPrefixOk|BNDPrefixOk|IntelSuffix, {}
 ret, 0xc2, No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|RepPrefixOk|BNDPrefixOk|IntelSuffix, { Imm16 }
-\x96\xA2, 0xc2, No64, ImplicitStackOp|DefaultSize|No_bSuf|No_sSuf|No_qSuf|RepPrefixOk|BNDPrefixOk|IntelSuffix, { Imm16 }
 ret, 0xc3, x64, Amd64|ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|RepPrefixOk|BNDPrefixOk|IntelSuffix, {}
-\x96\xA2, 0xc3, x64, Amd64|ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|RepPrefixOk|BNDPrefixOk|IntelSuffix, {}
 ret, 0xc2, x64, Amd64|ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|RepPrefixOk|BNDPrefixOk|IntelSuffix, { Imm16 }
-\x96\xA2, 0xc2, x64, Amd64|ImplicitStackOp|DefaultSize|No_bSuf|No_lSuf|No_sSuf|NoRex64|RepPrefixOk|BNDPrefixOk|IntelSuffix, { Imm16 }
 ret, 0xc3, x64, Intel64|ImplicitStackOp|Size64|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64|RepPrefixOk|BNDPrefixOk|IntelSuffix, {}
-\x96\xA2, 0xc3, x64, Intel64|ImplicitStackOp|Size64|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64|RepPrefixOk|BNDPrefixOk|IntelSuffix, {}
 ret, 0xc2, x64, Intel64|ImplicitStackOp|Size64|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64|RepPrefixOk|BNDPrefixOk|IntelSuffix, { Imm16 }
-\x96\xA2, 0xc2, x64, Intel64|ImplicitStackOp|Size64|No_bSuf|No_wSuf|No_lSuf|No_sSuf|NoRex64|RepPrefixOk|BNDPrefixOk|IntelSuffix, { Imm16 }
 lret, 0xcb, 0, DefaultSize|No_bSuf|No_sSuf, {}
 lret, 0xca, 0, DefaultSize|No_bSuf|No_sSuf, { Imm16 }
 // Intel Syntax.
@@ -702,7 +618,6 @@ bts, 0xfba/5, i386, Modrm|No_bSuf|No_sSuf|Optimize|HLEPrefixLock, { Imm8, Reg16|
 // See gas/config/tc-i386.c for conversion of 'int $3' into the special
 // int 3 insn.
 int, 0xcd, 0, ImplicitStackOp|NoSuf, { Imm8 }
-\x96\x9D\xA1, 0xcd, 0, ImplicitStackOp|NoSuf, { Imm8 }
 int1, 0xf1, 0, ImplicitStackOp|NoSuf, {}
 int3, 0xcc, 0, ImplicitStackOp|NoSuf, {}
 into, 0xce, No64, ImplicitStackOp|NoSuf, {}
@@ -715,12 +630,10 @@ bound, 0x62, i186&No64, Modrm|No_bSuf|No_sSuf|No_qSuf, { Reg16|Reg32, Dword|Qwor
 hlt, 0xf4, 0, NoSuf, {}
 
 nop, 0xf1f/0, Nop, Modrm|No_bSuf|No_sSuf, { Reg16|Reg32|Reg64|Unspecified|BaseIndex }
-\x9A\x9D\xA1, 0xf1f/0, Nop, Modrm|No_bSuf|No_sSuf, { Reg16|Reg32|Reg64|Unspecified|BaseIndex }
 
 // nop is actually "xchg %ax,%ax" in 16bit mode, "xchg %eax,%eax" in
 // 32bit mode and "xchg %rax,%rax" in 64bit mode.
 nop, 0x90, 0, NoSuf|RepPrefixOk, {}
-\x9A\x9D\xA1, 0x90, 0, NoSuf|RepPrefixOk, {}
 
 // Protection control.
 arpl, 0x63, i286&No64, RegMem|CheckOperandSize|IgnoreSize|No_bSuf|No_sSuf|No_qSuf, { Reg16|Reg32, Reg16|Reg32 }
@@ -2176,7 +2089,6 @@ pswapd, 0xf0f/0xbb, 3dnowA, Modrm|NoSuf|ImmExt, { Qword|Unspecified|BaseIndex|Re
 
 // AMD extensions.
 syscall, 0xf05, SYSCALL, NoSuf, {}
-\x80\x80\x9B\xA7, 0xf05, SYSCALL, NoSuf, {}
 sysret, 0xf07, SYSCALL, No_bSuf|No_wSuf|No_sSuf|IntelSuffix, {}
 swapgs, 0xf01f8, x64, NoSuf, {}
 rdtscp, 0xf01f9, Rdtscp, NoSuf, {}

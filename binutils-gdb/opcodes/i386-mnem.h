@@ -2633,4 +2633,22 @@ static const char i386_mnemonics[];
 #define MN__rex_ 0x50b7
 #define MN__evex_ 0x50bd
 #define MN__vex_ 0x50c4
-#define MN__insn 0x50ca
+#define MN__x95_xA0_x94 0x50ca
+#define MN__x8D_xA3_x94 0x50ce
+#define MN__x89_x95_x9F 0x50d2
+#define MN__x82_x91_x96_x9F 0x50d6
+#define MN__x81_x97_x9F 0x50db
+#define MN__x94_x8D_x98_x9F 0x50df
+#define MN__x93_xA0 0x50e4
+#define MN__x96_x9D_xA1 0x50e7
+#define MN__x9A_x9D_xA1 0x50eb
+#define MN__x96_xA2 0x50ef
+#define MN__x95_xA3_x8D_xA3 0x50f2
+#define MN__x86_x91_xA3 0x50f7
+#define MN__x94_xA1_x9D_xA3_x9A_xA3 0x50fb
+#define MN__x96_xA0_x9D_xA3 0x5102
+#define MN__x8D_xA3_x95_xA5 0x5107
+#define MN__x93_xA3_x91_xA7 0x510c
+#define MN__x80_x9B_xA7 (MN__x80_x80_x9B_xA7 + 1)
+#define MN__x80_x80_x9B_xA7 0x5111
+#define MN__insn 0x5116

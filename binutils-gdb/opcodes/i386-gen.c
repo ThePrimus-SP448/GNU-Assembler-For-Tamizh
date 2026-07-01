@@ -37,6 +37,43 @@
 static const char *program_name = NULL;
 static int debug = 0;
 
+static void decode_escapes (char *s)
+{
+  char *dest = s;
+  while (*s)
+    {
+      if (s[0] == '\\' && s[1] == 'x' && ISXDIGIT(s[2]) && ISXDIGIT(s[3]))
+        {
+          char hex[3] = { s[2], s[3], '\0' };
+          *dest++ = (char)strtol(hex, NULL, 16);
+          s += 4;
+        }
+      else
+        {
+          *dest++ = *s++;
+        }
+    }
+  *dest = '\0';
+}
+
+static void output_escaped_string (FILE *table, const char *name)
+{
+  const unsigned char *p = (const unsigned char *) name;
+  while (*p)
+    {
+      if (*p >= 128)
+        {
+          fprintf (table, "\\x%02x", *p);
+        }
+      else
+        {
+          fputc (*p, table);
+        }
+      p++;
+    }
+}
+
+
 typedef struct dependency
 {
   const char *name;
@@ -1450,17 +1487,30 @@ process_i386_operand_type (FILE *table, char *op, enum stage stage,
 
 static char *mkident (const char *mnem)
 {
-  char *ident = xstrdup (mnem), *p = ident;
+  char *ident = xmalloc (strlen (mnem) * 4 + 1);
+  char *dest = ident;
+  const unsigned char *p = (const unsigned char *) mnem;
 
-  do
+  while (*p)
     {
-      if (!ISALNUM (*p))
-	*p = '_';
+      if ((*p >= 'a' && *p <= 'z') || (*p >= 'A' && *p <= 'Z') || (*p >= '0' && *p <= '9'))
+        {
+          *dest++ = *p;
+        }
+      else if (*p >= 128)
+        {
+          dest += sprintf (dest, "_x%02X", *p);
+        }
+      else
+        {
+          *dest++ = '_';
+        }
+      p++;
     }
-  while (*++p);
-
+  *dest = '\0';
   return ident;
 }
+
 
 static void
 output_i386_opcode (FILE *table, const char *name, char *str,
@@ -1817,6 +1867,7 @@ expand_templates (char *name, const char *str, htab_t opcode_hash_table,
 
   if (ptr1 == NULL)
     {
+      decode_escapes (name);
       /* Get the slot in hash table.  */
       hash_slot = (struct opcode_hash_entry **)
 	htab_find_slot_with_hash (opcode_hash_table, name,
@@ -2103,7 +2154,9 @@ process_i386_opcodes (FILE *table)
 	}
       else
 	{
-	  fprintf (table, "  \"\\0\"\"%s\"\n", name);
+	  fprintf (table, "  \"\\0\"\"");
+	  output_escaped_string (table, name);
+	  fprintf (table, "\"\n");
 	  fprintf (fp, "#define MN_%s %#x\n", str, offs + 1);
 	  offs += strlen (name) + 1;
 	  free (str);

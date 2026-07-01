@@ -3729,7 +3729,10 @@ md_begin (void)
 #endif
 
 	if (c >= 128)
-	  operand_chars[c] = c;
+	  {
+	    mnemonic_chars[c] = c;
+	    operand_chars[c] = c;
+	  }
       }
 
     mnemonic_chars['_'] = '_';
