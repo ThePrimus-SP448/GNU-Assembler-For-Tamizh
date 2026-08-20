@@ -17,7 +17,7 @@ Tamil GNU AS localizes GNU binutils' assembler (`gas`) to assemble machine code 
 
 ### 1. Build the Assembler
 ```bash
-git clone [https://github.com/](https://github.com/)<your-username>/Tamizh_GNU_Assembler.git
+git clone [https://github.com/](https://github.com/)ThePrimus-SP448/GNU-Assembler-For-Tamizh.git
 cd Tamizh_GNU_Assembler
 ./build_gas.sh
 
@@ -50,9 +50,9 @@ ld -o test test.o
 
 Full specifications, character encoding tables, and contribution guidelines are in `/docs`:
 
-* [`docs/INSTRUCTION_REFERENCE.md`](https://www.google.com/search?q=docs/INSTRUCTION_REFERENCE.md) — 45 core instruction mappings and hex byte strings.
-* [`docs/ENCODING_SPECIFICATION.md`](https://www.google.com/search?q=docs/ENCODING_SPECIFICATION.md) — Custom 8-bit character layout and Pulli bridge details.
-* [`docs/CONTRIBUTIONS.md`](https://www.google.com/search?q=docs/CONTRIBUTIONS.md) — Vocabulary guidelines and contribution standards.
+* [`docs/INSTRUCTION_REFERENCE.md`]— 45 core instruction mappings and hex byte strings.
+* [`docs/ENCODING_SPECIFICATION.md`] — Custom 8-bit character layout and Pulli bridge details.
+* [`docs/CONTRIBUTIONS.md`] — Vocabulary guidelines and contribution standards.
 
 ---
 
