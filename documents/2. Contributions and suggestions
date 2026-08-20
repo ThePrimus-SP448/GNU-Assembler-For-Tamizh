@@ -1,0 +1,63 @@
+======================================================================
+               TAMIZH GNU TOOLCHAIN PROJECT (தமிழ் GNU AS)
+                  CONTRIBUTIONS, SUGGESTIONS & GUIDELINES
+======================================================================
+Author & Maintainer: Surendhiran
+Project: Native Pure-Classical Tamizh (Senthamizh) GNU Toolchain (gas/gcc)
+
+1. PROJECT MISSION & SCOPE
+----------------------------------------------------------------------
+The goal of this project is to build an extreme-scratch, fully localized, 
+pure Senthamizh systems programming toolchain:
+  1. Native GNU Assembler (gas) with Tamizh mnemonics & registers.
+  2. Native GNU C Compiler (gcc) backend emitting native Tamizh bytecode.
+  3. A family of higher-level Tamizh programming language abstractions.
+
+2. CORE ARCHITECTURAL CONSTRAINTS (STRICT)
+----------------------------------------------------------------------
+All contributions and code patches must adhere to the following rules:
+
+* 8-Bit Extended ASCII Mapping (128–255 range):
+  - Do NOT use standard UTF-8 variable-width encoding for assembler keywords.
+  - Every character token maps to a single byte (1 character = 1 byte).
+  - Pulli (்) sits at slot 159 (0x9F) as an explicit vowel-killer bridge.
+
+* Pure Classical Senthamizh Lexicon:
+  - NO Grantha letters (ஜ, ஷ, ஸ, ஹ, க்ஷ, ஸ்ரீ).
+  - NO Sanskrit or foreign loanwords.
+  - NO modern hybrid/colloquial coinages.
+  - Terms must be derived from attested classical roots that accurately 
+    describe the underlying silicon/hardware behavior.
+
+* Short-Form Economy:
+  - Every instruction and register must have a distinct, collision-free 
+    short form (1 to 3 characters) designed for ergonomic, fast typing.
+
+3. HOW TO CONTRIBUTE
+----------------------------------------------------------------------
+* Instruction & Register Vocabulary Suggestions:
+  - Check 'tamizh_encoding.txt' for character/byte validity.
+  - Propose terms with root etymology, literal meaning, and engineering 
+    justification.
+  - Verify that proposed short forms do not collide with existing mappings.
+
+* Toolchain & Parser Development:
+  - Source changes must pass through 'build_gas.sh' without compilation 
+    warnings or offset misalignments in 'i386-tbl.h'.
+  - Changes to lexers must preserve the blanket high-bit pass rules (>= 128) 
+    in 'safe-ctype.h', 'expr.c', and 'tc-i386.c'.
+
+* Testing & Test Cases:
+  - Submit standalone assembly test files (.s) written entirely in native 
+    Tamizh to validate machine code output via 'as-new' and 'ld'.
+
+4. SUGGESTIONS & CONTACT
+----------------------------------------------------------------------
+To discuss vocabulary decisions, propose grammar adjustments, or report 
+parser issues, open an issue or submit a patch with detailed linguistic 
+and technical reasoning.
+
+To submit suggestions, report errors, or engage in discussions regarding 
+design choices, please open an issue on the repository or email directly at:
+  -> theprimus.sp448@gmail.com
+======================================================================

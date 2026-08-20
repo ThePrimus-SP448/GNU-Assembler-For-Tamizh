@@ -1,0 +1,94 @@
+======================================================================
+               TAMIZH GNU SYSTEMS TOOLCHAIN PROJECT
+        CONTRIBUTOR GUIDELINES, PHILOSOPHY & SUGGESTIONS
+======================================================================
+Author & Maintainer : Surendhiran
+Project Repository  : GNU binutils (gas) & GCC Classical Tamizh Localisation
+Target Scope        : Native 8-Bit Architecture, Assembler & C Compiler Frontend
+
+======================================================================
+1. AUTHOR'S NOTE & INVITATION TO COLLABORATE
+======================================================================
+This project represents an ongoing learning journey and an effort in systems 
+engineering. As development progresses, architectural and linguistic models 
+will continue to be refined and updated.
+
+Constructive critique, corrections, and collaborative insights are warmly 
+welcomed. If you identify technical oversights, inaccurate etymological 
+roots, or opportunities for optimization, please feel free to reach out or 
+submit a patch.
+
+A candid reflection: while this initiative is dedicated to the preservation 
+and modernization of Tamizh, technical discourse around it is currently 
+conducted in English due to years of working exclusively with standard computing 
+mediums. This linguistic friction underscores the very necessity of this project. 
+Future generations of engineers should have the native foundation to reason, 
+design, and build low-level systems entirely in classical Senthamizh. Tamizh 
+must retain its structural purity and remain a vibrant, living medium for 
+future technologies.
+
+======================================================================
+2. PROBLEM STATEMENT & VISION
+======================================================================
+While modern computing continues to expand at an unprecedented pace, Tamizh 
+remains largely confined to translation layers rather than existing as a native 
+medium for systems-level development. 
+
+To bridge this divide, this project does not merely aim to build wrapper scripts 
+or superficial syntax translations over modern high-level languages like Python 
+or JavaScript—which still fundamentally require English computing paradigms 
+beneath the surface. Instead, this initiative starts strictly from extreme 
+scratch:
+  1. Defining a dedicated 8-bit hardware encoding standard for Tamizh tokens.
+  2. Localising the GNU Assembler (gas) for native machine instruction mappings.
+  3. Modifying the GNU C Compiler (GCC) backend to emit native Tamizh bytecode.
+  4. Building a scalable foundation for native higher-level computing abstractions.
+
+======================================================================
+3. CORE ARCHITECTURAL CONSTRAINTS
+======================================================================
+To maintain system-level integrity and speed, all contributions must 
+strictly adhere to the following technical and linguistic standards:
+
+* High-Performance 8-Bit Encoding Matrix (128–255 Extended ASCII):
+  - Do NOT introduce variable-width multi-byte UTF-8 parsing loops into the 
+    core lexer states.
+  - Every character token maps to a single byte (1 character = 1 byte)[cite: 2].
+  - The Pulli (்) operates as a dedicated vowel-killer bridge at slot 159 (0x9F).
+
+* Classical Senthamizh Lexicon:
+  - NO Grantha letters (ஜ, ஷ, ஸ, ஹ, க்ஷ, ஸ்ரீ).
+  - NO foreign or Sanskrit loanwords[cite: 2].
+  - NO modern hybrid coinages[cite: 2].
+  - Vocabulary must derive from attested classical roots that accurately 
+    reflect the silicon-level hardware behavior of the instruction or register[cite: 2].
+
+* Systematic Economy:
+  - Every instruction and register must have a distinct, collision-free short 
+    form (1 to 3 characters) designed for fast, ergonomic typing[cite: 2].
+
+======================================================================
+4. SUBMITTING SUGGESTIONS & FEEDBACK
+======================================================================
+We actively seek contributions across the following domains:
+
+* Etymological Review & Vocabulary:
+  - Validating classical root words against historical Tamil grammars.
+  - Ensuring proposed short forms maintain collision-free lookups.
+
+* Toolchain Implementation:
+  - Reviewing C-level parser overrides across 'safe-ctype.h', 'expr.c', and 
+    architecture-specific targets ('tc-i386.c', 'i386-gen.c').
+  - Ensuring binary stability when running automated rebuild scripts.
+
+* Verification & Assembly Test Suites:
+  - Writing native Tamizh assembly (.s) test cases to validate ELF64 object 
+    emission via 'as-new' and linking via 'ld'.
+
+To submit suggestions or engage in discussions regarding design choices, 
+please open an issue or contribute a patch with clear technical rationale.
+
+To submit suggestions, report errors, or engage in discussions regarding 
+design choices, please open an issue on the repository or email directly at:
+  -> theprimus.sp448@gmail.com
+======================================================================
